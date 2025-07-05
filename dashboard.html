@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | MindCare</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="blur-overlay"></div>
+    <nav>
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <span>MindCare</span>
+        </div>
+        <div class="user-menu">
+            <img src="https://ui-avatars.com/api/?name=User+Name&background=6c63ff&color=fff" alt="User" class="user-avatar">
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="welcome-section">
+            <h1>Welcome back, <span id="userName">User</span>!</h1>
+            <p>How would you like to continue your mental wellness journey today?</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Mood Tracking -->
+            <div class="feature-card" id="mood-tracking">
+                <div class="card-icon mood">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <h3>Mood Tracking</h3>
+                <p>Record and visualize your emotional patterns</p>
+                <div class="card-footer">
+                    <span class="last-used">Last used: Today</span>
+                    <button class="card-action">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Self-care Activities -->
+            <div class="feature-card" id="selfCare">
+                <div class="card-icon selfcare">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Self-care Activities</h3>
+                <p>Track your wellness routines and practices</p>
+                <div class="card-footer">
+                    <span class="last-used">Last used: 2 days ago</span>
+                    <button class="card-action">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Habit Tracker -->
+            <div class="feature-card" id="habitTracker">
+                <div class="card-icon habit">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Habit Tracker</h3>
+                <p>Build and maintain healthy habits</p>
+                <div class="card-footer">
+                    <span class="last-used">Last used: Yesterday</span>
+                    <button class="card-action">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Journal/Diary -->
+            <div class="feature-card" id="journal">
+                <div class="card-icon journal">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Journal/Diary</h3>
+                <p>Reflect on your thoughts and experiences</p>
+                <div class="card-footer">
+                    <span class="last-used">Last used: 3 days ago</span>
+                    <button class="card-action">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="floating-shapes">
+        <div class="shape circle"></div>
+        <div class="shape triangle"></div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

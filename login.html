@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MindCare</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="blur-overlay"></div>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <span>MindCare</span>
+        </div>
+        
+        <div class="login-card">
+            <h2>Welcome Back</h2>
+            <p class="subtext">Track your mental health journey</p>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Enter your email</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Enter your password</label>
+                    <input type="password" id="password" placeholder="••••••••••••" minlength="12" required>
+                    <i class="fas fa-lock"></i>
+                    <button type="button" class="toggle-password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                </div>
+                
+                <div class="options">
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="login-button">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+            
+            <div class="divider">or</div>
+            
+            <p class="signup-link">Don't have an account? <a href="register.html">Sign up</a></p>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

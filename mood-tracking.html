@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker | MindCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mood-tracking.css">
+</head>
+<body>
+    <div class="mood-tracker-container">
+        <header class="tracker-header">
+            <h1><i class="fas fa-brain"></i> MindCare Mood Tracker</h1>
+            <p>Track your emotional wellbeing</p>
+        </header>
+
+        <main class="tracker-main">
+            <!-- Assessment Section -->
+            <section id="assessment" class="active-section">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                
+                <div class="question-container">
+                    <!-- Questions will be inserted here by JS -->
+                </div>
+                
+                <div class="navigation-btns">
+                    <button id="prevBtn" class="nav-btn" disabled>
+                        <i class="fas fa-chevron-left"></i> Back
+                    </button>
+                    <button id="nextBtn" class="nav-btn">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button id="submitBtn" class="submit-btn">
+                        <i class="fas fa-check"></i> Submit
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results" class="hidden-section">
+                <div class="result-card">
+                    <div class="result-header">
+                        <i class="fas" id="result-icon"></i>
+                        <h2 id="result-title"></h2>
+                    </div>
+                    <div class="result-body">
+                        <p id="result-message"></p>
+                        <ul id="result-advice"></ul>
+                    </div>
+                    <div class="result-actions">
+                        <button id="newEntryBtn" class="action-btn">
+                            <i class="fas fa-plus"></i> New Entry
+                        </button>
+                        <button id="historyBtn" class="action-btn">
+                            <i class="fas fa-history"></i> View History
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="mood-tracking.js"></script>
+</body>
+</html>

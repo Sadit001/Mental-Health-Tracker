@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | MindCare</title>
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="blur-overlay"></div>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <span>MindCare</span>
+        </div>
+        
+        <div class="register-card">
+            <h2>Create Your Account</h2>
+            <p class="subtext">Begin your mental wellness journey today</p>
+            
+            <form id="registerForm">
+                <div class="form-grid">
+                    <!-- Name -->
+                    <div class="input-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    
+                    <!-- Contact -->
+                    <div class="input-group">
+                        <label for="contact">Phone Number</label>
+                        <input type="tel" id="contact" placeholder="+1 234 567 8900" required>
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    
+                    <!-- Occupation -->
+                    <div class="input-group">
+                        <label for="occupation">Occupation</label>
+                        <select id="occupation" required>
+                            <option value="">Select...</option>
+                            <option value="student">Student</option>
+                            <option value="employed">Employed</option>
+                            <option value="self-employed">Self-Employed</option>
+                            <option value="unemployed">Unemployed</option>
+                            <option value="retired">Retired</option>
+                        </select>
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    
+                    <!-- DOB -->
+                    <div class="input-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" required max="2010-01-01">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    
+                    <!-- Password -->
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="••••••••••••" minlength="12" required>
+                        <i class="fas fa-lock"></i>
+                        <div class="password-strength" id="passwordStrength"></div>
+                    </div>
+                    
+                    <!-- Password Toggle -->
+                    <div class="password-toggle">
+                        <button type="button" id="togglePassword">
+                            <i class="far fa-eye"></i> <span>Show Password</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Password Requirements -->
+                    <ul class="password-requirements">
+                        <li id="reqLength"><i class="fas fa-circle"></i> Minimum 12 characters</li>
+                        <li id="reqUpper"><i class="fas fa-circle"></i> At least 1 uppercase</li>
+                        <li id="reqNumber"><i class="fas fa-circle"></i> At least 1 number</li>
+                        <li id="reqSpecial"><i class="fas fa-circle"></i> At least 1 special character</li>
+                    </ul>
+                </div>
+                
+                <button type="submit" class="register-button">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </form>
+            
+            <p class="login-link">Already have an account? <a href="login.html">Log in</a></p>
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journal | MindCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="journal.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <header class="journal-header">
+        <div class="header-content">
+            <button class="back-button" onclick="window.location.href='dashboard.html'">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+            <h1><i class="fas fa-book-open"></i> My Journal</h1>
+            <div class="header-actions">
+                <button id="saveJournal" class="save-button">
+                    <i class="fas fa-save"></i> Save Entry
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="journal-container">
+        <div class="journal-metadata">
+            <div class="date-container">
+                <i class="fas fa-calendar-day"></i>
+                <span id="currentDate"></span>
+            </div>
+            <div class="mood-selector">
+                <label for="mood"><i class="fas fa-smile"></i> Current Mood:</label>
+                <select id="mood">
+                    <option value="happy">😊 Happy</option>
+                    <option value="neutral">😐 Neutral</option>
+                    <option value="sad">😢 Sad</option>
+                    <option value="angry">😠 Frustrated</option>
+                    <option value="anxious">😰 Anxious</option>
+                    <option value="grateful">🥰 Grateful</option>
+                </select>
+            </div>
+        </div>
+
+        <input type="text" id="entryTitle" placeholder="Journal Entry Title...">
+
+        <!-- Rich Text Editor Container -->
+        <div id="editor"></div>
+
+        <div class="writing-prompts">
+            <h3><i class="fas fa-lightbulb"></i> Need inspiration?</h3>
+            <div class="prompts">
+                <button class="prompt" data-prompt="What made me smile today?">
+                    <i class="fas fa-sun"></i> Positive Moment
+                </button>
+                <button class="prompt" data-prompt="What challenges did I face today?">
+                    <i class="fas fa-shield-alt"></i> Challenges
+                </button>
+                <button class="prompt" data-prompt="What am I grateful for today?">
+                    <i class="fas fa-heart"></i> Gratitude
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Celebration Modal -->
+    <div id="celebrationModal" class="celebration-modal">
+        <div class="celebration-box">
+            <div class="celebration-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <h2>Entry Saved!</h2>
+            <p>Your thoughts are important. Thank you for sharing.</p>
+            <button id="closeModal" class="close-button">
+                <i class="fas fa-check"></i> Continue
+            </button>
+        </div>
+    </div>
+
+    <!-- Confetti elements will be added here by JS -->
+    <div id="confettiContainer"></div>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="journal.js"></script>
+    <!-- Saved Entry Box (initially hidden) -->
+<div id="savedEntryBox" class="saved-entry-box">
+    <div class="entry-box-header">
+        <h3><i class="fas fa-check-circle"></i> Entry Saved</h3>
+        <button id="closeEntryBox" class="close-box-btn">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="entry-box-content">
+        <div class="entry-meta">
+            <span id="savedTitle" class="entry-title"></span>
+            <span id="savedDateTime" class="entry-datetime"></span>
+        </div>
+        <div id="savedPreview" class="entry-preview"></div>
+    </div>
+    <div class="entry-box-footer">
+        <button id="viewFullEntry" class="view-entry-btn">
+            <i class="fas fa-book-open"></i> View Full Entry
+        </button>
+    </div>
+</div>
+</body>
+</html>
