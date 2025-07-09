@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation | MindCare</title>
+    <link rel="stylesheet" href="consultation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="blur-overlay"></div>
+    <nav>
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <span>MindCare</span>
+        </div>
+        <div class="user-menu">
+            <img src="https://ui-avatars.com/api/?name=User+Name&background=6c63ff&color=fff" alt="User" class="user-avatar">
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="consultation-header">
+            <h1>Professional Consultation</h1>
+            <p>Connect with licensed mental health professionals</p>
+        </div>
+
+        <div class="search-filter">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search doctors...">
+            </div>
+            <div class="filter-options">
+                <select id="specialization">
+                    <option value="">All Specializations</option>
+                    <option value="psychologist">Psychologist</option>
+                    <option value="psychiatrist">Psychiatrist</option>
+                    <option value="therapist">Therapist</option>
+                    <option value="counselor">Counselor</option>
+                </select>
+                <select id="location">
+                    <option value="">All Locations</option>
+                    <option value="dhaka">Dhaka</option>
+                    <option value="chittagong">Chittagong</option>
+                    <option value="sylhet">Sylhet</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="doctors-grid" id="doctorsContainer">
+            <!-- Doctors will be loaded here by JavaScript -->
+        </div>
+
+        <div class="doctor-modal" id="doctorModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-header">
+                    <img id="modalDoctorImage" src="" alt="Doctor">
+                    <div>
+                        <h2 id="modalDoctorName"></h2>
+                        <p id="modalDoctorSpecialty"></p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="info-row">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p id="modalDoctorDegree"></p>
+                    </div>
+                    <div class="info-row">
+                        <i class="fas fa-briefcase"></i>
+                        <p id="modalDoctorExperience"></p>
+                    </div>
+                    <div class="info-row">
+                        <i class="fas fa-clock"></i>
+                        <p id="modalDoctorAvailability"></p>
+                    </div>
+                    <div class="info-row">
+                        <i class="fas fa-phone"></i>
+                        <p id="modalDoctorContact"></p>
+                    </div>
+                    <div class="info-row">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p id="modalDoctorLocation"></p>
+                    </div>
+                    <div class="info-row">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <p id="modalDoctorFee"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-book">Book Appointment</button>
+                    <button class="btn-close">Close</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="consultation.js"></script>
+</body>
+</html>
