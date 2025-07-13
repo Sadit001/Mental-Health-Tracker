@@ -7,9 +7,9 @@ const doctors = [
         degree: "PhD in Clinical Psychology, Harvard University",
         experience: "15 years of experience",
         availability: "Mon-Fri: 9AM - 5PM, Sat: 10AM - 2PM",
-        contact: "+1 (555) 123-4567",
-        location: "123 Wellness St, Boston, MA 02115",
-        fee: "$150 per session",
+        contact: "+880 15684152",
+        location: "Mirpur,Dhaka",
+        fee: "1500 tk per session",
         image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
     },
     {
@@ -19,9 +19,9 @@ const doctors = [
         degree: "MD Psychiatry, Johns Hopkins University",
         experience: "12 years of experience",
         availability: "Tue-Thu: 10AM - 6PM, Fri: 1PM - 5PM",
-        contact: "+1 (555) 987-6543",
-        location: "456 Mind Ave, New York, NY 10001",
-        fee: "$200 per session",
+        contact: "+880 17445661",
+        location: "456 Dhanmondi, Dhaka",
+        fee: "2000 tk per session",
         image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
     },
     {
