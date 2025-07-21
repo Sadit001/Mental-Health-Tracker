@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare | Habit Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="habittracker.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="blur-overlay"></div>
+    <nav>
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <span>MindCare</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#" class="active"><i class="fas fa-check-circle"></i> Habits</a></li>
+            <li><a href="#analytics"><i class="fas fa-chart-pie"></i> Analytics</a></li>
+        </ul>
+    </nav>
+
+    <main class="habit-tracker-container">
+        <div class="habit-header">
+            <h1><i class="fas fa-check-circle"></i> Habit Tracker</h1>
+            <p>Build consistency one day at a time</p>
+            <button id="newHabitBtn" class="cta-button">
+                <i class="fas fa-plus"></i> New Habit
+            </button>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card streak">
+                <h3>Current Streak</h3>
+                <p class="stat-value" id="currentStreak">0 days</p>
+            </div>
+            <div class="stat-card habits">
+                <h3>Habits Tracked</h3>
+                <p class="stat-value" id="habitsTracked">0</p>
+            </div>
+            <div class="stat-card completion">
+                <h3>Completion Rate</h3>
+                <p class="stat-value" id="completionRate">0%</p>
+            </div>
+        </div>
+
+        <div class="habits-grid" id="habitsGrid">
+            <div class="empty-state">
+                <i class="fas fa-clipboard-list"></i>
+                <h3>No habits yet</h3>
+                <p>Click "New Habit" to get started</p>
+            </div>
+        </div>
+
+        <div class="analytics-container" id="analytics">
+            <h2><i class="fas fa-chart-pie"></i> Habit Analytics</h2>
+            <div class="chart-timeframe">
+                <button class="timeframe-btn active" data-timeframe="week">Weekly</button>
+                <button class="timeframe-btn" data-timeframe="month">Monthly</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="habitChart"></canvas>
+            </div>
+            <div class="analytics-legends" id="chartLegends"></div>
+        </div>
+
+        <!-- New Habit Modal -->
+        <div class="modal" id="habitModal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2><i class="fas fa-plus"></i> Create New Habit</h2>
+                <form id="habitForm">
+                    <div class="form-group">
+                        <label for="habitName"><i class="fas fa-tag"></i> Habit Name</label>
+                        <input type="text" id="habitName" placeholder="e.g. Drink 8 glasses of water" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="habitCategory"><i class="fas fa-folder"></i> Category</label>
+                        <select id="habitCategory" required>
+                            <option value="health">Health</option>
+                            <option value="fitness">Fitness</option>
+                            <option value="mindfulness">Mindfulness</option>
+                            <option value="learning">Learning</option>
+                            <option value="productivity">Productivity</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="habitTime"><i class="fas fa-clock"></i> Best Time</label>
+                        <select id="habitTime" required>
+                            <option value="morning">Morning</option>
+                            <option value="afternoon">Afternoon</option>
+                            <option value="evening">Evening</option>
+                            <option value="anytime">Anytime</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="habitDuration"><i class="fas fa-hourglass-half"></i> Duration (minutes)</label>
+                        <input type="number" id="habitDuration" min="1" value="5" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="habitReminder">
+                        <label for="habitReminder"><i class="fas fa-bell"></i> Set Daily Reminder</label>
+                    </div>
+                    <button type="submit" class="cta-button">
+                        <i class="fas fa-save"></i> Create Habit
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Habit Stats Modal -->
+        <div class="modal" id="statsModal">
+            <div class="modal-content">
+                <span class="close-btn" id="closeStatsBtn">&times;</span>
+                <h2><i class="fas fa-chart-pie"></i> Habit Stats</h2>
+                <div class="chart-timeframe">
+                    <button class="timeframe-btn active" data-timeframe="week">Weekly</button>
+                    <button class="timeframe-btn" data-timeframe="month">Monthly</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="singleHabitChart"></canvas>
+                </div>
+                <div class="analytics-legends" id="singleHabitLegends"></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="floating-shapes">
+        <div class="shape circle"></div>
+        <div class="shape triangle"></div>
+        <div class="shape square"></div>
+    </div>
+
+    <script src="habittracker.js"></script>
+</body>
+</html>

@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         window.location.href = "selfcare.html";
                         break;
                     case "habitTracker":
-                        window.location.href = "habit.html";
+                        window.location.href = "habit-tracker.html";
                         break;
                     case "journal":
                         window.location.href = "journal.html";
