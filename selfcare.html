@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare | Self-Care Activities</title>
+    <link rel="stylesheet" href="selfcare.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>MindCare</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#" data-section="self-care"><i class="fas fa-heart"></i> Self-Care</a></li>
+                    <li><a href="#" data-section="progress"><i class="fas fa-chart-line"></i> Progress</a></li>
+                    <li><a href="#" data-section="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h2 id="page-title">Self-Care Activities</h2>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=User+Demo" alt="User" id="user-avatar">
+                    <span id="username-display">User Demo</span>
+                </div>
+            </header>
+
+            <!-- Dashboard Section (Default View) -->
+            <section class="dashboard-section">
+                <!-- Activity Log Section -->
+                <section class="activity-log">
+                    <div class="card">
+                        <h3><i class="fas fa-plus-circle"></i> Log New Activity</h3>
+                        <form id="activity-form">
+                            <div class="form-group">
+                                <label for="activity">Activity</label>
+                                <select id="activity" required>
+                                    <option value="">Select an activity</option>
+                                    <option value="meditation">Meditation</option>
+                                    <option value="walk">Walk</option>
+                                    <option value="journaling">Journaling</option>
+                                    <option value="yoga">Yoga</option>
+                                    <option value="reading">Reading</option>
+                                    <option value="music">Music</option>
+                                    <option value="exercise">Exercise</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Duration (minutes)</label>
+                                <input type="number" id="duration" min="1" max="120" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Mood Before</label>
+                                <div class="mood-selector">
+                                    <input type="radio" name="mood-before" id="mb-1" value="1">
+                                    <label for="mb-1">😢</label>
+                                    <input type="radio" name="mood-before" id="mb-2" value="2">
+                                    <label for="mb-2">😞</label>
+                                    <input type="radio" name="mood-before" id="mb-3" value="3" checked>
+                                    <label for="mb-3">😐</label>
+                                    <input type="radio" name="mood-before" id="mb-4" value="4">
+                                    <label for="mb-4">🙂</label>
+                                    <input type="radio" name="mood-before" id="mb-5" value="5">
+                                    <label for="mb-5">😊</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Mood After</label>
+                                <div class="mood-selector">
+                                    <input type="radio" name="mood-after" id="ma-1" value="1">
+                                    <label for="ma-1">😢</label>
+                                    <input type="radio" name="mood-after" id="ma-2" value="2">
+                                    <label for="ma-2">😞</label>
+                                    <input type="radio" name="mood-after" id="ma-3" value="3">
+                                    <label for="ma-3">😐</label>
+                                    <input type="radio" name="mood-after" id="ma-4" value="4" checked>
+                                    <label for="ma-4">🙂</label>
+                                    <input type="radio" name="mood-after" id="ma-5" value="5">
+                                    <label for="ma-5">😊</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn">Save Activity</button>
+                        </form>
+                    </div>
+
+                    <div class="card">
+                        <h3><i class="fas fa-history"></i> Recent Activities</h3>
+                        <div class="activities-list" id="activities-list">
+                            <!-- Activities will be added here via JS -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Insights Section -->
+                <section class="insights">
+                    <div class="card">
+                        <h3><i class="fas fa-chart-pie"></i> Activity Effectiveness</h3>
+                        <div class="chart-container">
+                            <canvas id="effectivenessChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-lightbulb"></i> Personalized Recommendations</h3>
+                        <div class="recommendations" id="recommendations">
+                            <p>Complete at least 2 activities to get recommendations.</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Progress Section (Hidden by default) -->
+            <section class="progress-section hidden">
+                <div class="card">
+                    <h3><i class="fas fa-chart-line"></i> Weekly Progress</h3>
+                    <div class="chart-container">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="stat">
+                            <span class="stat-value" id="activities-count">0</span>
+                            <span class="stat-label">Activities</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="mood-improvement">0%</span>
+                            <span class="stat-label">Mood Boost</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="streak-days">0</span>
+                            <span class="stat-label">Day Streak</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-award"></i> Achievements</h3>
+                    <div class="achievements-grid" id="achievements">
+                        <!-- Achievements will be added here via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section (Hidden by default) -->
+            <section class="settings-section hidden">
+                <div class="card">
+                    <h3><i class="fas fa-cog"></i> Account Settings</h3>
+                    <form id="settings-form">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter new username">
+                        </div>
+                        <div class="form-group">
+                            <label for="notifications">Enable Notifications</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="notifications" checked>
+                                <span class="slider"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="theme">Theme</label>
+                            <select id="theme">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="system">System Default</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Save Settings</button>
+                    </form>
+                </div>
+                <div class="card danger-zone">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+                    <div class="danger-actions">
+                        <button id="export-data" class="btn btn-secondary">
+                            <i class="fas fa-file-export"></i> Export Data
+                        </button>
+                        <button id="import-data" class="btn btn-secondary">
+                            <i class="fas fa-file-import"></i> Import Data
+                        </button>
+                        <button id="reset-data" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Reset All Data
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="selfcare.js"></script>
+</body>
+</html>

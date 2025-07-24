@@ -3,45 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindCare Chatbot</title>
-    <link rel="stylesheet" href="chatbot.css">
+    <title>MindCare | Emotional Support Chatbot</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
-    <div class="blur-overlay"></div>
-    <nav>
-        <div class="logo">
-            <i class="fas fa-brain"></i>
-            <span>MindCare</span>
-        </div>
-        <div class="user-menu">
-            <img src="https://ui-avatars.com/api/?name=User+Name&background=6c63ff&color=fff" alt="User" class="user-avatar">
-            <button class="logout-btn">
-                <i class="fas fa-sign-out-alt"></i>
-            </button>
-        </div>
-    </nav>
-
-    <main class="chatbot-container">
-        <div class="chat-header">
+    <div class="chatbot-container">
+        <div class="chatbot-header">
             <div class="chatbot-avatar">
-                <i class="fas fa-robot"></i>
+                <i class="fas fa-heartbeat"></i>
             </div>
-            <div class="chat-title">
-                <h2>MindCare Assistant</h2>
-                <p>Your mental wellness companion</p>
+            <div class="chatbot-info">
+                <h3>MindCare Assistant</h3>
+                <p>Online</p>
+            </div>
+            <div class="chatbot-controls">
+                <button id="minimize-btn"><i class="fas fa-minus"></i></button>
+                <button id="close-btn"><i class="fas fa-times"></i></button>
             </div>
         </div>
-
-        <div class="chat-messages" id="chatMessages">
+        
+        <div class="chatbot-messages" id="chat-messages">
             <!-- Messages will appear here -->
         </div>
-
-        <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Type your message here..." autocomplete="off">
-            <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+        
+        <div class="chatbot-input-area">
+            <div class="typing-indicator" id="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <input type="text" id="user-input" placeholder="How are you feeling today?" autocomplete="off">
+            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            <button id="mic-btn"><i class="fas fa-microphone"></i></button>
         </div>
-    </main>
+    </div>
 
     <script src="chatbot.js"></script>
 </body>

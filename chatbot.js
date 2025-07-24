@@ -1,160 +1,196 @@
-// DOM Elements
-const chatMessages = document.getElementById('chatMessages');
-const userInput = document.getElementById('userInput');
-const sendButton = document.getElementById('sendButton');
-
-// Positive and negative keywords
-const positiveKeywords = ['happy', 'good', 'great', 'wonderful', 'excellent', 'joy', 'joyful', 'positive', 'amazing', 'fantastic', 'awesome', 'better', 'improving'];
-const negativeKeywords = ['sad', 'depressed', 'bad', 'terrible', 'awful', 'anxious', 'anxiety', 'stress', 'stressed', 'lonely', 'hurt', 'pain', 'angry', 'frustrated', 'hopeless'];
-
-// Initial bot messages
-const welcomeMessages = [
-    "Hello there! I'm your MindCare assistant. How can I help you today?",
-    "Welcome to your safe space. How are you feeling right now?",
-    "Hi! I'm here to listen. What's on your mind today?"
-];
-
-const followUpQuestions = [
-    "How has your day been so far?",
-    "What emotions are you experiencing right now?",
-    "Would you like to share what's been on your mind lately?",
-    "How are you really feeling deep inside?",
-    "What's something you'd like to get off your chest today?"
-];
-
-// Positive responses
-const positiveResponses = [
-    "That's wonderful to hear! Keep nurturing those positive feelings.",
-    "I'm so glad you're feeling good! You deserve this happiness.",
-    "Your positivity is inspiring! Remember this feeling on tougher days.",
-    "That's fantastic! Celebrate these good moments.",
-    "It's great that you're feeling this way! What do you think contributed to this?"
-];
-
-// Negative responses
-const negativeResponses = [
-    "I'm sorry you're feeling this way. Remember, this feeling is temporary.",
-    "It's okay to feel this way. You're stronger than you think.",
-    "I hear you. Would it help to talk more about what's bothering you?",
-    "These feelings are valid. Let's work through them together.",
-    "I'm here for you. You're not alone in this."
-];
-
-// Motivational messages
-const motivationalMessages = [
-    "Every day may not be good, but there's something good in every day.",
-    "You've survived 100% of your bad days so far. You've got this!",
-    "This tough time is just a chapter in your story, not the whole book.",
-    "Healing isn't linear. Be patient with yourself.",
-    "You are capable of amazing things, even on days when you don't feel like it."
-];
-
-// Initialize chat
-function initChat() {
-    // Show welcome message after a short delay
+document.addEventListener('DOMContentLoaded', function() {
+    const chatMessages = document.getElementById('chat-messages');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const micBtn = document.getElementById('mic-btn');
+    const typingIndicator = document.getElementById('typing-indicator');
+    const minimizeBtn = document.getElementById('minimize-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const chatbotContainer = document.querySelector('.chatbot-container');
+    
+    // Positive words and responses
+    const positiveWords = [
+        'good', 'great', 'awesome', 'happy', 'joyful', 'excited', 
+        'nice', 'wonderful', 'fantastic', 'amazing', 'perfect', 
+        'grateful', 'thankful', 'blissful', 'content', 'peaceful',
+        'optimistic', 'hopeful', 'lovely', 'adorable', 'marvelous'
+    ];
+    
+    // Negative words and responses
+    const negativeWords = [
+        'bad', 'sad', 'angry', 'depressed', 'anxious', 'stressed',
+        'hate', 'worst', 'terrible', 'awful', 'horrible', 'pain',
+        'fear', 'scared', 'lonely', 'tired', 'exhausted', 'frustrated',
+        'annoyed', 'upset', 'disappointed', 'hopeless', 'helpless'
+    ];
+    
+    // Motivational messages
+    const motivationalMessages = [
+        "Remember, tough times don't last but tough people do. You've got this!",
+        "Every storm runs out of rain. Brighter days are ahead for you.",
+        "You are stronger than you think. This challenge will make you wiser.",
+        "The comeback is always stronger than the setback. Keep going!",
+        "You've survived 100% of your bad days so far. That's impressive!",
+        "This is just a chapter, not your whole story. Turn the page!",
+        "Stars can't shine without darkness. Your light will return.",
+        "Healing isn't linear. Be patient with yourself today.",
+        "You are not alone in this. I'm here to support you.",
+        "Your current situation is not your final destination. Keep believing."
+    ];
+    
+    // Appreciation messages
+    const appreciationMessages = [
+        "That's wonderful to hear! Keep nurturing those positive feelings!",
+        "Your positivity is contagious! Thanks for sharing your good energy!",
+        "I'm so glad you're feeling this way! Celebrate these moments!",
+        "Your good vibes are inspiring! Keep shining bright!",
+        "Happiness looks great on you! Savor this feeling!",
+        "What a beautiful state of mind! How can we build on this?",
+        "Your positive attitude is your superpower! Keep it up!",
+        "It's heartwarming to hear you're feeling so good today!",
+        "Moments like these are precious. Thanks for sharing your joy!",
+        "Your optimism is refreshing! The world needs more of this energy!"
+    ];
+    
+    // Welcome messages
+    const welcomeMessages = [
+        "Welcome to MindCare! I'm your emotional support assistant. How are you feeling today?",
+        "Hello there! I'm here to help you navigate your emotions. What's on your mind?",
+        "Welcome back! Let's check in - how are you feeling right now?",
+        "Hi friend! I'm MindCare. Before we begin, how are you truly feeling today?"
+    ];
+    
+    // Initial welcome message
     setTimeout(() => {
-        addBotMessage(welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)]);
-        
-        // Show follow-up question after another delay
-        setTimeout(() => {
-            addBotMessage(followUpQuestions[Math.floor(Math.random() * followUpQuestions.length)]);
-        }, 1500);
+        addMessage('bot', getRandomMessage(welcomeMessages), 'neutral');
     }, 500);
-}
-
-// Add message to chat
-function addMessage(text, isUser) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message');
-    messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-    messageDiv.textContent = text;
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-// Add bot message with typing indicator
-function addBotMessage(text) {
-    // Show typing indicator
-    const typingDiv = document.createElement('div');
-    typingDiv.classList.add('typing-indicator');
-    typingDiv.innerHTML = `
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-        <div class="typing-dot"></div>
-    `;
-    chatMessages.appendChild(typingDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
     
-    // Remove typing indicator and show message after delay
-    setTimeout(() => {
-        chatMessages.removeChild(typingDiv);
-        addMessage(text, false);
-    }, 1500);
-}
-
-// Analyze user message sentiment
-function analyzeSentiment(message) {
-    const lowerMsg = message.toLowerCase();
-    
-    // Check for positive keywords
-    const isPositive = positiveKeywords.some(word => lowerMsg.includes(word));
-    
-    // Check for negative keywords
-    const isNegative = negativeKeywords.some(word => lowerMsg.includes(word));
-    
-    return {
-        isPositive,
-        isNegative
-    };
-}
-
-// Generate bot response
-function generateResponse(userMessage) {
-    const { isPositive, isNegative } = analyzeSentiment(userMessage);
-    
-    if (isPositive) {
-        const randomPositive = positiveResponses[Math.floor(Math.random() * positiveResponses.length)];
-        const randomMotivational = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
-        return `${randomPositive} ${randomMotivational}`;
-    } 
-    else if (isNegative) {
-        const randomNegative = negativeResponses[Math.floor(Math.random() * negativeResponses.length)];
-        const randomMotivational = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
-        return `${randomNegative} ${randomMotivational}`;
-    }
-    else {
-        return "Thank you for sharing. Would you like to tell me more about how you're feeling?";
-    }
-}
-
-// Handle user input
-function handleUserInput() {
-    const message = userInput.value.trim();
-    if (message === '') return;
-    
-    // Add user message
-    addMessage(message, true);
-    userInput.value = '';
-    
-    // Generate and show bot response after a delay
-    setTimeout(() => {
-        const response = generateResponse(message);
-        addBotMessage(response);
+    // Send message function
+    function sendMessage() {
+        const message = userInput.value.trim();
+        if (message === '') return;
         
-        // Ask follow-up question
+        addMessage('user', message, 'user');
+        userInput.value = '';
+        
+        // Show typing indicator
+        showTypingIndicator();
+        
+        // Simulate bot thinking
         setTimeout(() => {
-            addBotMessage(followUpQuestions[Math.floor(Math.random() * followUpQuestions.length)]);
-        }, 2000);
-    }, 1000);
-}
-
-// Event listeners
-sendButton.addEventListener('click', handleUserInput);
-userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        handleUserInput();
+            hideTypingIndicator();
+            const botResponse = generateResponse(message);
+            addMessage('bot', botResponse.text, botResponse.type);
+        }, 1000 + Math.random() * 2000); // Random delay between 1-3 seconds
     }
+    
+    // Generate appropriate response
+    function generateResponse(message) {
+        const lowerMsg = message.toLowerCase();
+        
+        // Check for positive words
+        const hasPositive = positiveWords.some(word => lowerMsg.includes(word));
+        
+        // Check for negative words
+        const hasNegative = negativeWords.some(word => lowerMsg.includes(word));
+        
+        if (hasPositive) {
+            return {
+                text: getRandomMessage(appreciationMessages),
+                type: 'positive'
+            };
+        }
+        
+        if (hasNegative) {
+            return {
+                text: getRandomMessage(motivationalMessages),
+                type: 'motivational'
+            };
+        }
+        
+        // Default neutral response
+        return {
+            text: "Thank you for sharing. I'm here to support you. How else are you feeling?",
+            type: 'neutral'
+        };
+    }
+    
+    // Add message to chat
+    function addMessage(sender, text, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(sender === 'bot' ? 'bot-message' : 'user-message');
+        
+        if (sender === 'bot' && type !== 'user') {
+            messageDiv.classList.add(type);
+        }
+        
+        const timeString = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        messageDiv.innerHTML = `
+            <div class="message-text">${text}</div>
+            <span class="message-time">${timeString}</span>
+        `;
+        
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Helper functions
+    function getRandomMessage(messages) {
+        return messages[Math.floor(Math.random() * messages.length)];
+    }
+    
+    function showTypingIndicator() {
+        typingIndicator.style.display = 'flex';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    function hideTypingIndicator() {
+        typingIndicator.style.display = 'none';
+    }
+    
+    // Event listeners
+    sendBtn.addEventListener('click', sendMessage);
+    
+    userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') sendMessage();
+    });
+    
+    // Voice recognition (optional)
+    micBtn.addEventListener('click', function() {
+        if (!('webkitSpeechRecognition' in window)) {
+            alert("Your browser doesn't support voice recognition");
+            return;
+        }
+        
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        
+        micBtn.classList.add('listening');
+        
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            userInput.value = transcript;
+            sendMessage();
+            micBtn.classList.remove('listening');
+        };
+        
+        recognition.onerror = function(event) {
+            console.error(event.error);
+            micBtn.classList.remove('listening');
+        };
+        
+        recognition.start();
+    });
+    
+    // Chatbot controls
+    minimizeBtn.addEventListener('click', function() {
+        chatbotContainer.classList.toggle('minimized');
+    });
+    
+    closeBtn.addEventListener('click', function() {
+        document.body.innerHTML = '<h1>MindCare Chatbot Closed</h1><p>Refresh page to reopen</p>';
+    });
 });
-
-// Initialize chat when page loads
-document.addEventListener('DOMContentLoaded', initChat);
