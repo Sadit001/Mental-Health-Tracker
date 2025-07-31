@@ -1,0 +1,250 @@
+:root {
+    --primary: #6c63ff;
+    --positive: #4caf50;
+    --negative: #f44336;
+    --neutral: #ff9800;
+    --light: #f5f7fa;
+    --dark: #333;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: var(--dark);
+    margin: 0;
+    padding: 0;
+}
+
+.mood-tracker-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.tracker-header {
+    background: linear-gradient(135deg, var(--primary), #8a82ff);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.tracker-header h1 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.tracker-header p {
+    margin: 0.5rem 0 0;
+    opacity: 0.9;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #eee;
+    margin: 0 2rem;
+    border-radius: 3px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.question-container {
+    padding: 2rem;
+    min-height: 300px;
+}
+
+.question {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.question.active {
+    display: block;
+}
+
+.question h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.option-btn {
+    background: white;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.option-btn:hover {
+    border-color: var(--primary);
+}
+
+.option-btn.selected {
+    border-color: var(--primary);
+    background: rgba(108, 99, 255, 0.1);
+}
+
+.option-btn i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.navigation-btns {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem 2rem;
+}
+
+.nav-btn, .submit-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-btn {
+    background: #eee;
+    color: #666;
+}
+
+.nav-btn:not([disabled]):hover {
+    background: #ddd;
+}
+
+.submit-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.submit-btn:hover {
+    background: #5a52e0;
+}
+
+/* Results Section */
+.hidden-section {
+    display: none;
+}
+
+.result-card {
+    padding: 2rem;
+    text-align: center;
+}
+
+.result-header {
+    margin-bottom: 2rem;
+}
+
+.result-header i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.result-body {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.action-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#newEntryBtn {
+    background: var(--primary);
+    color: white;
+}
+
+#historyBtn {
+    background: #eee;
+    color: #666;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .option-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+/* Enhanced selection styles */
+.option-btn.selected {
+  border-color: var(--primary);
+  background: rgba(108, 99, 255, 0.1);
+  transform: scale(1.03);
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.2);
+}
+
+.scale-option.selected {
+  background: var(--primary);
+  color: white;
+}
+
+.emotion-option.selected {
+  border-left: 4px solid var(--primary);
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+/* Error message */
+.error-message {
+  color: #ff6b6b;
+  margin-top: 1rem;
+}
