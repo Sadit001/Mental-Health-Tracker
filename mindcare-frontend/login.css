@@ -268,3 +268,25 @@ body {
         padding: 1rem;
     }
 }
+
+/* Alert Styles */
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Loading Spinner */
+.fa-spin {
+    animation: fa-spin 1s infinite linear;
+}
+@keyframes fa-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
