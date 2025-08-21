@@ -31,9 +31,9 @@ const doctors = [
         degree: "MA in Counseling Psychology, Columbia University",
         experience: "8 years of experience",
         availability: "Mon-Wed-Fri: 8AM - 4PM",
-        contact: "+1 (555) 456-7890",
-        location: "789 Harmony Lane, Los Angeles, CA 90001",
-        fee: "$120 per session",
+        contact: "+880 17456-76890",
+        location: "Motijheel, Dhaka",
+        fee: "1200 per session",
         image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
     },
     {
@@ -43,9 +43,9 @@ const doctors = [
         degree: "PhD in Child Psychology, Stanford University",
         experience: "10 years of experience",
         availability: "Mon-Tue-Wed: 9AM - 3PM",
-        contact: "+1 (555) 789-0123",
-        location: "321 Growth Blvd, Chicago, IL 60601",
-        fee: "$180 per session",
+        contact: "+880 1789-011923",
+        location: "Malibagh, Dhaka",
+        fee: "1800 per session",
         image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
     },
     {
@@ -55,8 +55,8 @@ const doctors = [
         degree: "LMFT, University of Southern California",
         experience: "7 years of experience",
         availability: "Tue-Thu-Sat: 10AM - 6PM",
-        contact: "+1 (555) 234-5678",
-        location: "654 Relationship Rd, San Francisco, CA 94102",
+        contact: "+880 1711021363",
+        location: "Gulshan, Dhaka",
         fee: "$130 per session",
         image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
     },
@@ -67,9 +67,9 @@ const doctors = [
         degree: "PhD in Neuropsychology, Yale University",
         experience: "14 years of experience",
         availability: "Mon-Wed-Fri: 8AM - 5PM",
-        contact: "+1 (555) 345-6789",
-        location: "987 Brain St, Houston, TX 77001",
-        fee: "$220 per session",
+        contact: "+880 1789-123469",
+        location: "Banani, Dhaka",
+        fee: "2200 per session",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
     }
 ];
